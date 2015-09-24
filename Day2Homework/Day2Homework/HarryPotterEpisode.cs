@@ -2,6 +2,7 @@
 {
     public enum HarryPotterEpisode
     {
-        First
+        First,
+        Second
     }
 }

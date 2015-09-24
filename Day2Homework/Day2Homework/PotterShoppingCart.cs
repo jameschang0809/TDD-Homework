@@ -1,10 +1,26 @@
-﻿namespace Day2Homework
+﻿using System;
+using System.Linq;
+
+namespace Day2Homework
 {
     public class PotterShoppingCart
     {
-        public int CheckOut(HarryPotter[] books)
+        public double CheckOut(HarryPotter[] books)
         {
-            return 100;
+            var total = (double)books.Sum(x => x.Price);
+            switch (books.Length)
+            {
+                case 1:
+                    total *= 1;
+                    break;
+                case 2:
+                    total *= 0.95;
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
+            return total;
         }
     }
 }
