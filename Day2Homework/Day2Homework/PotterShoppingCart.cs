@@ -22,6 +22,9 @@ namespace Day2Homework
                 case 4:
                     total *= 0.8;
                     break;
+                case 5:
+                    total *= 0.75;
+                    break;
                 default:
                     throw new NotImplementedException();
             }
