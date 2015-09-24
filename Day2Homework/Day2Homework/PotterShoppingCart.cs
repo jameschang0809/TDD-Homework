@@ -8,22 +8,28 @@ namespace Day2Homework
     {
         public double CheckOut(HarryPotter[] books)
         {
+            var groupedBooks = GroupBooks(books);
+            return groupedBooks.Sum(x => CalculateTotalPrice(x));
+        }
+
+        private static IEnumerable<List<HarryPotter>> GroupBooks(IEnumerable<HarryPotter> books)
+        {
             var groupedBooks = new List<List<HarryPotter>>();
             foreach (var item in books.GroupBy(x => x.Episode))
             {
                 var i = 0;
-                foreach(var subItem in item)
+                foreach (var subItem in item)
                 {
                     if (groupedBooks.Count == i)
-                        groupedBooks.Add(new List<HarryPotter> {subItem});
+                        groupedBooks.Add(new List<HarryPotter> { subItem });
                     else
                         groupedBooks[i].Add(subItem);
 
                     i++;
-                }    
+                }
             }
 
-            return groupedBooks.Sum(x => CalculateTotalPrice(x));
+            return groupedBooks;
         }
 
         private static double CalculateTotalPrice(IEnumerable<HarryPotter> books)
